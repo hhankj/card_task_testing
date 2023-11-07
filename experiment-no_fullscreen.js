@@ -9,7 +9,7 @@ Github:https://github.com/vekteo/Wisconsin_JSPsych
 
 /*************** VARIABLES ***************/
 
-let timeline = [];
+var timeline = [];
 const rules = [
   "color_rule",
   "shape_rule",
@@ -19,17 +19,17 @@ const rules = [
   "number_rule",
   "color_rule",
 ];
-let actualRule = rules[0];
-let numberOfCorrectResponses = 0;
-let counter = 0;
-let targetImages = [];
-let totalErrors = 0;
-let appliedRules = [];
+var actualRule = rules[0];
+var numberOfCorrectResponses = 0;
+var counter = 0;
+var targetImages = [];
+var totalErrors = 0;
+var appliedRules = [];
 const subjectId = jsPsych.randomization.randomID(15);
 
 /*************** TIMELINE ELEMENTS ***************/
 
-var instructions = {
+const instructions = {
   type: "instructions",
   pages: [
     `<h1>${language.welcomePage.welcome}</h1><br><p>${language.welcomePage.clickNext}</p>`,
@@ -42,7 +42,7 @@ var instructions = {
   button_label_previous: language.button.previous,
 };
 
-var endTask = {
+const endTask = {
   type: "html-keyboard-response",
   stimulus: function () {
     return `<h2>${language.end.end}</h2><br><p>${language.end.thankYou}</p>`;
