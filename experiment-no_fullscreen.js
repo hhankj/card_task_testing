@@ -58,7 +58,7 @@ const endTask = {
 
 function preloadImages() {
   for (i = 1; i < 65; i++) {
-    let targetCard = Object.values(cards).filter(
+    var targetCard = Object.values(cards).filter(
       (card) => card.trialNumber === i
     )[0];
     targetImages.push(targetCard.image);
@@ -99,7 +99,7 @@ function addTrials(targetCard) {
       return counter == 1;
     },
     on_finish: function (data) {
-      let previousRule;
+      var previousRule;
       if (actualRule == "color_rule") {
         ruleToUse = targetCard.colorRule;
         if (counter !== 0) {
@@ -186,9 +186,14 @@ function CheckRestricted(src, restricted) {
 }
 
 /*************** TIMELINE ***************/
+var welcome = {
+  type: "html-keyboard-response",
+  stimulus: "Welcome to the experiment. Press any key to begin.",
+};
+timeline.push(welcome);
 
-for (let i = 1; i < 65; i++) {
-  let targetCard = Object.values(cards).filter(
+for (var i = 1; i < 65; i++) {
+  var targetCard = Object.values(cards).filter(
     (card) => card.trialNumber === i
   )[0];
   timeline.push(addIfNoEnd(targetCard));
@@ -208,17 +213,17 @@ jsPsych.init({
   },
   on_data_update: function () {
     if (jsPsych.data.get().last(1).values()[0].is_trial === true) {
-      let nMinus1Trial = jsPsych.data
+      var nMinus1Trial = jsPsych.data
         .get()
         .filter({ is_trial: true })
         .last(1)
         .values()[0];
-      let nMinus2Trial = jsPsych.data
+      var nMinus2Trial = jsPsych.data
         .get()
         .filter({ is_trial: true })
         .last(2)
         .values()[0];
-      let nMinus3Trial = jsPsych.data
+      var nMinus3Trial = jsPsych.data
         .get()
         .filter({ is_trial: true })
         .last(3)
@@ -256,7 +261,7 @@ jsPsych.init({
       appliedRules = [];
 
       if (nMinus2Trial) {
-        let isSame =
+        var isSame =
           CheckRestricted(
             nMinus1Trial.applied_rules,
             nMinus2Trial.applied_rules
@@ -299,7 +304,7 @@ jsPsych.init({
       actualRule = rules[counter];
     }
 
-    let interactionData = jsPsych.data.getInteractionData();
+    var interactionData = jsPsych.data.getInteractionData();
     const interactionDataOfLastTrial = interactionData
       .filter({ trial: jsPsych.data.get().last(1).values()[0].trial_index })
       .values();
