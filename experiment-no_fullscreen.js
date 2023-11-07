@@ -29,7 +29,7 @@ const subjectId = jsPsych.randomization.randomID(15);
 
 /*************** TIMELINE ELEMENTS ***************/
 
-const instructions = {
+var instructions = {
   type: "instructions",
   pages: [
     `<h1>${language.welcomePage.welcome}</h1><br><p>${language.welcomePage.clickNext}</p>`,
@@ -42,7 +42,7 @@ const instructions = {
   button_label_previous: language.button.previous,
 };
 
-const endTask = {
+var endTask = {
   type: "html-keyboard-response",
   stimulus: function () {
     return `<h2>${language.end.end}</h2><br><p>${language.end.thankYou}</p>`;
