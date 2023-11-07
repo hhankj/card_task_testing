@@ -196,7 +196,6 @@ var instructions = {
   stimulus: `
     sssssssssssw
   `,
-  post_trial_gap: 2000,
 };
 timeline.push(instructions);
 
