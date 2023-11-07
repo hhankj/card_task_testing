@@ -189,12 +189,12 @@ function CheckRestricted(src, restricted) {
 /* define welcome message trial */
 var welcome_block = {
     type: "html-keyboard-response",
-    stimulus: "Welcome to the experiment. Press any key to begin."
+    stimulus: "Welcome to the penis. Press any key to begin."
 };
 timeline.push(welcome_block);
 
 /* define instructions trial */
-var instructions = {
+var instructing = {
     type: "html-keyboard-response",
     stimulus: "<p>In this experiment, a circle will appear in the center " +
         "of the screen.</p><p>If the circle is <strong>blue</strong>, " +
@@ -210,12 +210,7 @@ var instructions = {
         "<p>Press any key to begin.</p>",
     post_trial_gap: 2000
 };
-
-var welcome = {
-  type: "html-keyboard-response",
-  stimulus: "Welcome to the experiment. Press any key to begin.",
-};
-timeline.push(welcome);
+timeline.push(instructing);
 
 for (let i = 1; i < 65; i++) {
   let targetCard = Object.values(cards).filter(
