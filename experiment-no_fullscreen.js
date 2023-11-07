@@ -186,6 +186,7 @@ function CheckRestricted(src, restricted) {
 }
 
 /*************** TIMELINE ***************/
+timeline.push();
 for (let i = 1; i < 65; i++) {
   let targetCard = Object.values(cards).filter(
     (card) => card.trialNumber === i
