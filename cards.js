@@ -354,7 +354,7 @@ const cards = {
         shape: "triangle",
         number: 4,
         trialNumber: 36,
-        image: "../static/images/triangle_yellow_4.png",
+        image: "https://cdn.jsdelivr.net/gh/vekteo/Card_sorting_jsPsych/static/images/triangle_yellow_4.png",
         colorRule: 2,
         shapeRule: 0,
         numberRule: 3
