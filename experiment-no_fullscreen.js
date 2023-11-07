@@ -9,7 +9,7 @@ Github:https://github.com/vekteo/Wisconsin_JSPsych
 
 /*************** VARIABLES ***************/
 
-var timeline = [];
+let timeline = [];
 const rules = [
   "color_rule",
   "shape_rule",
@@ -19,12 +19,12 @@ const rules = [
   "number_rule",
   "color_rule",
 ];
-var actualRule = rules[0];
-var numberOfCorrectResponses = 0;
-var counter = 0;
-var targetImages = [];
-var totalErrors = 0;
-var appliedRules = [];
+let actualRule = rules[0];
+let numberOfCorrectResponses = 0;
+let counter = 0;
+let targetImages = [];
+let totalErrors = 0;
+let appliedRules = [];
 const subjectId = jsPsych.randomization.randomID(15);
 
 /*************** TIMELINE ELEMENTS ***************/
@@ -58,7 +58,7 @@ const endTask = {
 
 function preloadImages() {
   for (i = 1; i < 65; i++) {
-    var targetCard = Object.values(cards).filter(
+    let targetCard = Object.values(cards).filter(
       (card) => card.trialNumber === i
     )[0];
     targetImages.push(targetCard.image);
@@ -99,7 +99,7 @@ function addTrials(targetCard) {
       return counter == 1;
     },
     on_finish: function (data) {
-      var previousRule;
+      let previousRule;
       if (actualRule == "color_rule") {
         ruleToUse = targetCard.colorRule;
         if (counter !== 0) {
@@ -192,6 +192,12 @@ var welcome = {
 };
 timeline.push(welcome);
 
+for (let i = 1; i < 65; i++) {
+  let targetCard = Object.values(cards).filter(
+    (card) => card.trialNumber === i
+  )[0];
+  timeline.push(addIfNoEnd(targetCard));
+}
 
 jsPsych.data.addProperties({ subject: subjectId });
 
@@ -207,17 +213,17 @@ jsPsych.init({
   },
   on_data_update: function () {
     if (jsPsych.data.get().last(1).values()[0].is_trial === true) {
-      var nMinus1Trial = jsPsych.data
+      let nMinus1Trial = jsPsych.data
         .get()
         .filter({ is_trial: true })
         .last(1)
         .values()[0];
-      var nMinus2Trial = jsPsych.data
+      let nMinus2Trial = jsPsych.data
         .get()
         .filter({ is_trial: true })
         .last(2)
         .values()[0];
-      var nMinus3Trial = jsPsych.data
+      let nMinus3Trial = jsPsych.data
         .get()
         .filter({ is_trial: true })
         .last(3)
@@ -255,7 +261,7 @@ jsPsych.init({
       appliedRules = [];
 
       if (nMinus2Trial) {
-        var isSame =
+        let isSame =
           CheckRestricted(
             nMinus1Trial.applied_rules,
             nMinus2Trial.applied_rules
@@ -298,7 +304,7 @@ jsPsych.init({
       actualRule = rules[counter];
     }
 
-    var interactionData = jsPsych.data.getInteractionData();
+    let interactionData = jsPsych.data.getInteractionData();
     const interactionDataOfLastTrial = interactionData
       .filter({ trial: jsPsych.data.get().last(1).values()[0].trial_index })
       .values();
