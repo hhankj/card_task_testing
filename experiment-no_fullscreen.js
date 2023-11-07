@@ -186,12 +186,6 @@ function CheckRestricted(src, restricted) {
 }
 
 /*************** TIMELINE ***************/
-var welcome = {
-  type: "html-keyboard-response",
-  stimulus: "Welcome to the experiment. Press any key to begin.",
-};
-timeline.push(welcome);
-
 for (let i = 1; i < 65; i++) {
   let targetCard = Object.values(cards).filter(
     (card) => card.trialNumber === i
