@@ -192,12 +192,6 @@ var welcome = {
 };
 timeline.push(welcome);
 
-for (var i = 1; i < 65; i++) {
-  var targetCard = Object.values(cards).filter(
-    (card) => card.trialNumber === i
-  )[0];
-  timeline.push(addIfNoEnd(targetCard));
-}
 
 jsPsych.data.addProperties({ subject: subjectId });
 
